@@ -1,6 +1,9 @@
 const bcrypt = require('bcrypt')
 const router = require('express').Router();
+const jwt = require('jsonwebtoken')
 const db = require('../database/dbConfig')
+
+const secret = require('./secrets')
 
 router.post('/register', (req, res) => {
   const { username, password } = req.body
@@ -23,7 +26,12 @@ router.post('/login', (req, res) => {
   db('users').where({ username }).first()
   .then(user => {
     if(user && bcrypt.compareSync(password, user.password)){
-      // Need to add stuff here for authorization and token
+      const token = generateToken(req.body)
+
+      res.status(200).json({
+        message: "Logged in succesfully",
+        token
+      })
     } else{
       res.status(401).json({ message: "Invalid credentials" })
     }
@@ -31,7 +39,19 @@ router.post('/login', (req, res) => {
   .catch(error => {
     res.status(500).json({ error: error.message })
   })
-  // Will need to finish this out
 });
+
+function generateToken(user){
+  const payload= {
+    subect: user.id,
+    username: user.username
+  }
+
+  const options = {
+    expiresIn: '1hr'
+  }
+
+  return jwt.sign(payload, secret.jwtSecret, options)
+}
 
 module.exports = router;
