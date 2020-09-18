@@ -26,7 +26,7 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
 
-
+Tokens are required to be sent back and forth from the client and typically requires them to save it somewhere in their local storage whereas sessions, and cookies, can be handled server side while being stored in a special area of the users browser.
 
 2. What does `bcrypt` do to help us store passwords in a secure manner.
 
