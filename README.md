@@ -26,11 +26,19 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
 
+
+
 2. What does `bcrypt` do to help us store passwords in a secure manner.
+
+Hash passwords, meaning it essentially transforms the password to a random string of data that can be saved so the password can't be easily read if its found.
 
 3. How are unit tests different from integration and end-to-end testing.
 
+Unit tests test one area, one component or router, of an application at a time. Whereas integration tests test the functionality of multiple sections working together and end-to-end test the full user experience by simulating user usage from UI to server calls.
+
 4. How _Test Driven Development_ changes the way we write applications and tests.
+
+They can simplify our code writing style, we'll want to write simpler cleaner code to make sure when we add new code to our applications it doesn't cause our previous tests to fail.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
